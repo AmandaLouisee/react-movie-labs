@@ -71,6 +71,13 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         ))}
       </Paper>
 
+      <Paper component="ul" sx={{...root}}>
+      <li>
+          <Chip label="Translations" sx={{...chip}} color="primary" />
+
+          </li>
+      </Paper>
+
       <Fab
         color="secondary"
         variant="extended"
