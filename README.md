@@ -9,11 +9,7 @@ Name: Amanda Louise Brenden
 ### Features.
 [ A bullet-point list of the __new features__ you added to the Movies Fan app (and any modifications to existing features) .]
  
-+ Feature 1
-+ Feature 2
-+ Feature 3
-+ etc
-+ etc
++ Watchlist
 
 ## Setup requirements.
 
@@ -23,19 +19,19 @@ Name: Amanda Louise Brenden
 
 [ List the __additional__ TMDB endpoints used, giving the description and pathname for each one.] 
 
-e.g.
-+ Discover list of movies - discover/movie
-+ Movie details - movie/:id
-+ Movie genres = /genre/movie/list
++ Movie credits -movie/{movie_id}/credits
++ Movie key words - movie/{movie_id}/keywords
++ Movie translations - movie/{movie_id}/translations
++ List of upcoming movies -movie/upcoming
++ List of popular movies -/movie/popular
 
 ## Routing.
 
 [ List the __new routes__ supported by your app and state the associated page.]
 
-+ /blogs - displays all published blogs.
-+ /blogs/:id - displays a particular blog.
-+ /blogs/:id/comments - detail view of a particular blog and its comments.
-+ etc.
++ /movies/watchlist - display a list of movies you want to see. 
++ /movies/nowplaying - display all movies that are playing now.
++ /movies/upcoming - display all movies that are upcoming. 
 
 [If relevant, state what aspects of your app are protected (i.e. require authentication) and what is public.]
 
