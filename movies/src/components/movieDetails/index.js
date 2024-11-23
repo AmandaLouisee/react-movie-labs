@@ -21,8 +21,14 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const MovieDetails = ({ movie, translation, credit }) => {  // Don't miss this!
+const MovieDetails = ({ movie, translation, credit, keyword }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
+
+  if(!movie || !translation || !credit || !keyword){
+    <Typography variant="h6" component="p">
+    Info is loading.. 
+  </Typography>
+  };
 
   return (
     <>
@@ -103,6 +109,17 @@ const MovieDetails = ({ movie, translation, credit }) => {  // Don't miss this!
         {translation.translations.map((language) => (
           <li key={translation.id}>
             <Chip label={language.english_name} sx={{...chip}} />
+          </li>
+                  ))}
+      </Paper>
+
+      <Paper component="ul" sx={{...root}}>
+      <li>
+          <Chip label="Keywords" sx={{...chip}} color="primary" />
+        </li>
+        {keyword.keywords.map((i) => (
+          <li key={keyword.id}>
+            <Chip label={i.name} sx={{...chip}} />
           </li>
                   ))}
       </Paper>

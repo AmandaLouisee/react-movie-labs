@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from 'react-router-dom';
 import MovieDetails from "../components/movieDetails/";
 import PageTemplate from "../components/templateMoviePage";
-import { getMovie, getMovieTranslations, getMovieCredits } from '../api/tmdb-api'
+import { getMovie, getMovieTranslations, getMovieCredits, getMovieKeyWords } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
 // import useMovie from "../hooks/useMovie";   Redundant
@@ -15,19 +15,25 @@ const MoviePage = (props) => {
     getMovie
   );
 
-  const { data: translationData} 
+  const { data: translationData, isLoading1 } 
   = useQuery(
     ["movieTranslations", { id: id }],
     getMovieTranslations
   ) 
 
-  const { data: creditsData} 
+  const { data: creditsData, isLoading2 } 
   = useQuery(
     ["movieCredits", { id: id }],
     getMovieCredits
   ) 
 
-  if (isLoading) {
+  const { data: keywordData, isLoading3 } 
+  = useQuery(
+    ["movieKeywords", { id: id }],
+    getMovieKeyWords
+  ) 
+
+  if (isLoading || isLoading1 || isLoading2 || isLoading3) {
     return <Spinner />;
   }
 
@@ -40,7 +46,7 @@ const MoviePage = (props) => {
       {movie ? (
         <>
           <PageTemplate movie={movie}>
-            <MovieDetails movie={movie} translation={translationData} credit={creditsData}/>
+            <MovieDetails movie={movie} translation={translationData} credit={creditsData} keyword ={keywordData}/>
           </PageTemplate>
         </>
       ) : (
