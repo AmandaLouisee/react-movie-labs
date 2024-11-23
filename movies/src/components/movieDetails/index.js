@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
+import { getMovieTranslations } from "../../api/tmdb-api";
 
 
 const root = {
@@ -21,7 +22,7 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const MovieDetails = ({ movie }) => {  // Don't miss this!
+const MovieDetails = ({ movie, translation }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -74,8 +75,12 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
       <Paper component="ul" sx={{...root}}>
       <li>
           <Chip label="Translations" sx={{...chip}} color="primary" />
-
+        </li>
+        {translation.translations.map((language) => (
+          <li key={translation.iso_639_1}>
+            <Chip label={language.english_name} sx={{...chip}} />
           </li>
+                  ))}
       </Paper>
 
       <Fab
