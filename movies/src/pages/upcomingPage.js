@@ -23,6 +23,9 @@ const UpcomingPage = (props) => {
   //const addToFavorites = (movieId) => true 
 
 
+  const mustWatch = movies.filter(m => m.willSee)
+  localStorage.setItem('mustWatch', JSON.stringify(mustWatch))
+
 
   return (
     <PageTemplate
