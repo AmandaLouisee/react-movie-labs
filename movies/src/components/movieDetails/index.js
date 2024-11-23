@@ -21,7 +21,7 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const MovieDetails = ({ movie, translation }) => {  // Don't miss this!
+const MovieDetails = ({ movie, translation, credit }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -71,16 +71,42 @@ const MovieDetails = ({ movie, translation }) => {  // Don't miss this!
         ))}
       </Paper>
 
+
+      <Paper component="ul" sx={{...root}}>
+      <li>
+          <Chip label="Cast" sx={{...chip}} color="primary" />
+        </li>
+        {credit.cast.map((o) => (
+          <li key={credit.id}>
+            <Chip label={o.name} sx={{...chip}} />
+          </li>
+                  ))}
+      </Paper>
+
+
+      <Paper component="ul" sx={{...root}}>
+      <li>
+          <Chip label="Crew" sx={{...chip}} color="primary" />
+        </li>
+        {credit.crew.map((o) => (
+          <li key={credit.id}>
+            <Chip label={o.name} sx={{...chip}} />
+          </li>
+                  ))}
+                  </Paper>
+
+
       <Paper component="ul" sx={{...root}}>
       <li>
           <Chip label="Translations" sx={{...chip}} color="primary" />
         </li>
         {translation.translations.map((language) => (
-          <li key={translation.iso_639_1}>
+          <li key={translation.id}>
             <Chip label={language.english_name} sx={{...chip}} />
           </li>
                   ))}
       </Paper>
+
 
       <Fab
         color="secondary"
