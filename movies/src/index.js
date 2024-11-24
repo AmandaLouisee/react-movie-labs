@@ -28,6 +28,7 @@ const queryClient = new QueryClient({
 
 const App = () => {
   return (
+    <div style={{backgroundColor: "#c2d2e9"}}>
     <QueryClientProvider client={queryClient}>
     <BrowserRouter>
     <SiteHeader />
@@ -48,6 +49,7 @@ const App = () => {
   </BrowserRouter>
   <ReactQueryDevtools initialIsOpen={false} />
   </QueryClientProvider>
+  </div>
   );
 };
 
