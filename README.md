@@ -4,7 +4,7 @@ Name: Amanda Louise Brenden
 
 ## Overview.
 
-In this repository you find a movie App using TMDB API. 
+In this repository you find a movie App using TMDB API. It displays all movies, movie details, popular movies, upcoming movies, nowplaying movies. A user can add a movie til favories. A user can also add a movie to watchlist. 
 
 ### Features.
  
@@ -17,7 +17,10 @@ In this repository you find a movie App using TMDB API.
 
 ## Setup requirements.
 
-[ Outline any non-standard setup steps necessary to run your app locally after cloning the repo.]
+After cloning this repo: 
++ Open react-movie-labs in code editor
++ cd movies - go to movies direcory in terminal
++ npm start - Run the application in terminal
 
 ## API endpoints.
 
