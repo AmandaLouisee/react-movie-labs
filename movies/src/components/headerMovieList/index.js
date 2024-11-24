@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
+import Pagination from "@mui/material/Pagination";
 
 const Header = (props ) => {
   const title = props.title

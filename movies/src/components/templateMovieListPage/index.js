@@ -3,11 +3,17 @@ import Header from "../headerMovieList";
 import FilterCard from "../filterMoviesCard";
 import MovieList from "../movieList";
 import Grid from "@mui/material/Grid2";
+import { Pagination } from "@mui/material";
 
 function MovieListPageTemplate({ movies, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
+  const [myPage, setMyPage] = useState(1);
   const genreId = Number(genreFilter);
+  const numberOfMoviesOnAPage = 7;
+  const paginationBeginning = (myPage - 1)*numberOfMoviesOnAPage;
+  const paginationEnding = paginationBeginning + numberOfMoviesOnAPage;
+
 
   let displayedMovies = movies
     .filter((m) => {
@@ -20,7 +26,13 @@ function MovieListPageTemplate({ movies, title, action }) {
   const handleChange = (type, value) => {
     if (type === "name") setNameFilter(value);
     else setGenreFilter(value);
+    setMyPage(1);
   };
+
+  const handleChangePage = (event, value) => {
+    setMyPage(value);
+  }
+  displayedMovies = displayedMovies.slice(paginationBeginning,paginationEnding);
 
   return (
     <Grid container>
@@ -40,6 +52,21 @@ function MovieListPageTemplate({ movies, title, action }) {
           />
         </Grid>
         <MovieList action={action} movies={displayedMovies}></MovieList>
+      </Grid>
+
+      <Grid size={12}>
+
+        <div style={{backgroundColor: "#c2d2e9", display: "flex", justifyContent:"center"}}>
+          <Pagination
+          count={Math.ceil(movies.length/numberOfMoviesOnAPage)}
+          page={myPage}
+          onChange={handleChangePage}
+          color="primary"
+          showFirstButton
+          showLastButton
+          />
+         </div>
+
       </Grid>
     </Grid>
   );
